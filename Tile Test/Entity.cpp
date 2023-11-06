@@ -19,9 +19,9 @@ void Entity::renderSelf(sf::RenderWindow& win) {
 
 
 	shape[0].texCoords = sf::Vector2f(0, 0);
-	shape[1].texCoords = sf::Vector2f(10, 0);
-	shape[2].texCoords = sf::Vector2f(0, 10);
-	shape[3].texCoords = sf::Vector2f(10, 10);
+	shape[1].texCoords = sf::Vector2f(sizeX, 0);
+	shape[2].texCoords = sf::Vector2f(0, sizeY);
+	shape[3].texCoords = sf::Vector2f(sizeX, sizeY);
 	sf::RenderStates state;
 	win.draw(shape, textureSet->getTexture(textureID));
 	if (DRAW_DEBUG) {

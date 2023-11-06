@@ -32,7 +32,7 @@ int main()
     map.loadTextureAsset(mainMap);
     sf::Clock Clock;
 
-    winObj.window.setFramerateLimit(300);
+    winObj.window.setFramerateLimit(200);
     map.loadDataIntoTile("save.txt");
 
     while (winObj.window.isOpen())
