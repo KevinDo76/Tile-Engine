@@ -15,10 +15,10 @@ public:
 	int sizeX;
 	int sizeY;
 
-	float boundX;
-	float boundY;
-	float offsetBoundX;
-	float offsetBoundY;
+	float boundX; // size
+	float boundY; // size
+	float offsetBoundX; //offset to entity position origin(top left corner)
+	float offsetBoundY; //offset to entity position origin(top left corner)
 
 	bool collidableWithMap;
 	int textureID;
@@ -29,8 +29,11 @@ public:
 	Entity(float posX, float posY, int sX, int sY, textureAsset& textureA);
 	~Entity();
 
-	void computePhysic(float elapsedTime, mapManager& physicAgainst, sf::RenderWindow& window);
-
+	void resolveCollisionWithMap(float elapsedTime, mapManager& physicAgainst, sf::RenderWindow& window);
+	void resolveCollisionWithEntity(float elapsedTime, Entity& physicAgainst, mapManager& mapPhysicAgainst, sf::RenderWindow& window, bool SoftCollisionResponse = true);
+	void computePhysic(float elapsedTime, mapManager& physicAgainst, sf::RenderWindow& window, bool resetVelocity = true);
+	void resolveVelocity(float elapsedTime);
+	bool checkBoundingTouchEntity(Entity& physicAgainst);
 	void renderSelf(sf::RenderWindow& win);
 private:
 	static bool RayAgainstRectCollision(const sf::FloatRect Rect, const sf::Vector2f rayOrigin, const sf::Vector2f rayDirection, sf::Vector2f& faceNormal, sf::Vector2f& contactPoint, float& sc);
